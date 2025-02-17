@@ -5,6 +5,7 @@ import {
   detectLanguage,
   translateText,
 } from "../utils";
+import Button from "./Button";
 
 const TranslateButton = ({input}) => {
   const {
@@ -69,7 +70,7 @@ const TranslateButton = ({input}) => {
             </select>
           </label>
 
-          <button
+          <Button
             onClick={() =>
               translateText(
                 detector,
@@ -79,12 +80,10 @@ const TranslateButton = ({input}) => {
                 setLoading
               )
             }
+            title={loading ? "Translating..." : "Translate"}
             className="bg-blue-500 text-white px-4 py-2 rounded"
             disabled={loading}
-          >
-            {loading ? "Translating..." : "Translate"}
-          </button>
-
+          />
          
         </>
       )}

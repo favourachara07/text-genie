@@ -77,7 +77,7 @@ export default function Home() {
       )}
 
       <form onSubmit={handleSubmit} className="flex flex-col justify-between">
-        <div className="w-full mb-4 border border-gray-200 rounded-lg bg-white flex justify-between">
+        <div className="w-full mb-4 border  rounded-[2rem] bg-white flex justify-between  border-[#40ffaa]">
           <div className="  rounded-t-lg flex-1 ">
             {/* <label htmlFor="comment" className="sr-only">
               Your comment
@@ -88,7 +88,7 @@ export default function Home() {
               onChange={handleChange}
               onKeyDown={handleKeyPress}
               rows="4"
-              className="w-full px-0 text-sm ml-4 mt-3 text-gray-900 bg-white border-0 focus:ring-0 outline-none focus:ring-transparent  "
+              className="w-full px-0 text-sm ml-4 mt-3 text-gray-900 bg-white border-0 focus:ring-0 outline-none focus:ring-transparent  resize-none"
               placeholder="Ask whatever you want"
             ></textarea>
           </div>
