@@ -6,7 +6,7 @@ import {
   translateText,
 } from "../utils";
 
-const TranslateButton = () => {
+const TranslateButton = ({input}) => {
   const {
     text,
     setText,
@@ -38,11 +38,14 @@ const TranslateButton = () => {
       );
     }
   }, []);
+  useEffect(() => {
+    if (input && detector) {
+      detectLanguage(detector, input, setDetectedLanguage);
+    }
+  }, [input, detector]);
 
   return (
-    <div className="p-4 max-w-full flex flex-col justify-end items-end">
-
-
+    <div className=" flex flex-col w-fit just justify-end items-end">
       {!isSupported && (
         <div className="bg-red-500 text-white p-2 rounded">
           Your browser doesn&apos;t support the Translator or Language Detector APIs.
@@ -76,18 +79,13 @@ const TranslateButton = () => {
                 setLoading
               )
             }
-            className="bg-blue-500 text-white px-4 max-w-20 py-2 rounded"
+            className="bg-blue-500 text-white px-4 py-2 rounded"
             disabled={loading}
           >
             {loading ? "Translating..." : "Translate"}
           </button>
 
-          {translatedText && (
-            <div className="mt-4 p-2 border relative right-[50rem] flex flex-start flex-col rounded bg-gray-100">
-              <h3 className="font-bold">Translation:</h3>
-              <p>{translatedText}</p>
-            </div>
-          )}
+         
         </>
       )}
     </div>
