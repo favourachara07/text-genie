@@ -21,7 +21,7 @@ const App = () => {
     // dark:bg-[#1E1E1E] dark:text-white
     <div className="p-4 bg-[#F7F8FA] h-screen ">
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Summarizer />
+      {/* <Summarizer /> */}
       <div className="flex  flex-col h-[90%]">
         <Home />
       </div>
