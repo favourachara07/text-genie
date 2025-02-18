@@ -1,17 +1,10 @@
 import { BsMoon, BsSun } from "react-icons/bs";
 import GradientText from "../ui/GradientText";
-import { useEffect } from "react";
 
 export default function Header({ setDarkMode, darkMode }) {
-    useEffect(() => {
-        sessionStorage.setItem("darkMode", JSON.stringify(darkMode));
-      
-        if (darkMode) {
-          document.documentElement.classList.add("dark");
-        } else {
-          document.documentElement.classList.remove("dark");
-        }
-      }, [darkMode]);
+    const toggleDarkMode = () => {
+        setDarkMode((prevMode) => !prevMode);
+      };
   return (
     <header className="flex justify-between items-center p-4">
       <GradientText
@@ -22,7 +15,12 @@ export default function Header({ setDarkMode, darkMode }) {
       >
         TextGenie
       </GradientText>
-      {darkMode ?<BsSun onClick={()=>setDarkMode(false)} className="text-[#40ffaa] text-4xl" /> : <BsMoon onClick={()=>setDarkMode(true)} className="text-[#40ffaa] text-4xl" /> }
+      <button
+        onClick={toggleDarkMode}
+        className="p-2 rounded-full bg-gray-200 dark:bg-gray-700"
+      >
+        {darkMode ? <BsSun className="text-yellow-500" /> : <BsMoon className="text-gray-900" />}
+      </button>
     </header>
   );
 }

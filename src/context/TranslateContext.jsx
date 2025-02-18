@@ -11,7 +11,8 @@ export const TranslateProvider = ({ children }) => {
   const [selectedLanguage, setSelectedLanguage] = useState("es");
   const [isSupported, setIsSupported] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [detector, setDetector] = useState(null); // Store language detector instance
+  const [detector, setDetector] = useState(null);
+  const [displayTranslate, setDisplayTranslate] = useState(false);
 
   return (
     <TranslateContext.Provider
@@ -30,6 +31,7 @@ export const TranslateProvider = ({ children }) => {
         setLoading,
         detector,
         setDetector,
+        displayTranslate, setDisplayTranslate
       }}
     >
       {children}

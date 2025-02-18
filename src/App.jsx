@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Summarizer from "./components/SummarizerButton";
 import TranslateButton from "./components/TranslateButton";
@@ -9,10 +9,19 @@ const App = () => {
     const storedDarkMode = sessionStorage.getItem("darkMode");
     return storedDarkMode !== null ? JSON.parse(storedDarkMode) : false;
   });
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    sessionStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }, [darkMode]);
   return (
-    <div className="p-4 bg-[#F7F8FA] h-screen dark:bg-[#1E1E1E] dark:text-white">
+    // dark:bg-[#1E1E1E] dark:text-white
+    <div className="p-4 bg-[#F7F8FA] h-screen ">
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      {/* <Summarizer /> */}
+      <Summarizer />
       <div className="flex  flex-col h-[90%]">
         <Home />
       </div>
