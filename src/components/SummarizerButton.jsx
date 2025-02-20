@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import Button from './Button';
 
-const Summarizer = () => {
+const Summarizer = ({input}) => {
   const [inputText, setInputText] = useState('');
   const [summary, setSummary] = useState('');
   const [downloadProgress, setDownloadProgress] = useState(0);
@@ -73,18 +74,11 @@ const Summarizer = () => {
 
   return (
     <div>
-      <h1>Summarizer API in React</h1>
-      <textarea
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
-        placeholder="Enter text to summarize..."
-        rows={10}
-        cols={50}
-      />
+      <h1>Summarizer</h1>
       <br />
-      <button onClick={handleSummarize} disabled={isSummarizing}>
+      <Button otherClass='py-2.5' onClick={handleSummarize} disabled={isSummarizing}>
         {isSummarizing ? 'Summarizing...' : 'Summarize'}
-      </button>
+      </Button>
       {downloadProgress > 0 && downloadProgress < 100 && (
         <p>Downloading model: {downloadProgress.toFixed(2)}%</p>
       )}

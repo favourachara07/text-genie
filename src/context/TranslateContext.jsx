@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const TranslateContext = createContext();
 
@@ -13,6 +13,11 @@ export const TranslateProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [detector, setDetector] = useState(null);
   const [displayTranslate, setDisplayTranslate] = useState(false);
+  const [displaySummary, setDisplaySummary] = useState(false);
+  const [name, setName] = useState(""); 
+  const [isModalOpen, setIsModalOpen] = useState(true);
+
+
 
   return (
     <TranslateContext.Provider
@@ -31,7 +36,11 @@ export const TranslateProvider = ({ children }) => {
         setLoading,
         detector,
         setDetector,
-        displayTranslate, setDisplayTranslate
+        displayTranslate,
+        setDisplayTranslate,
+        displaySummary,
+        setDisplaySummary,
+        name,setName, isModalOpen, setIsModalOpen
       }}
     >
       {children}

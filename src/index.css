@@ -4,25 +4,35 @@
 
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
-    width: 12px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #07caf1;
-    border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #041E23;
-  }
-  
-  /* Firefox scrollbar styles */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #024a58 #f1f1f1;
-  }
-  
+  width: 8px; /* Adjust the width to make it slimmer */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  margin: 2px; /* Add margin to move the scrollbar to the edge */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #07caf1, #024a58); /* Add a gradient for a stylish look */
+  border-radius: 10px;
+  border: 2px solid #f1f1f1; /* Add a border to create some spacing */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #041E23, #024a58); /* Change the gradient on hover */
+}
+
+/* Firefox scrollbar styles */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1e1e1e #4A4A4A;
+}
+
+/* Edge and IE scrollbar styles */
+body {
+  -ms-overflow-style: none; /* Hide default scrollbar in IE */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Hide default scrollbar in Edge */
+}

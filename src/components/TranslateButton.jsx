@@ -10,10 +10,8 @@ import Button from "./Button";
 const TranslateButton = ({ input }) => {
   const {
     text,
-    setText,
     detectedLanguage,
     setDetectedLanguage,
-    translatedText,
     setTranslatedText,
     selectedLanguage,
     setSelectedLanguage,
@@ -64,7 +62,7 @@ const TranslateButton = ({ input }) => {
         </div>
       ) : (
         <>
-          <p className="mb-2 hidden md:block text-gray-700">{detectedLanguage}</p>
+          <p className="mb-2 hidden md:block text-white">{detectedLanguage}</p>
 
           <label className="block font-medium mb-[0.3rem] mr-2 md:mr-0">
             Translate to:
@@ -74,8 +72,11 @@ const TranslateButton = ({ input }) => {
               onChange={(e) => setSelectedLanguage(e.target.value)}
             >
               <option value="en">English</option>
-              <option value="ja">Japanese</option>
+              <option value="pt">Portuguese</option>
               <option value="es">Spanish</option>
+              <option value="ru">Russian</option>
+              <option value="tr">Turkish</option>
+              <option value="fr">French</option>
             </select>
           </label>
 
@@ -91,6 +92,7 @@ const TranslateButton = ({ input }) => {
               setDisplayTranslate(false);
             }}
             title={loading ? "Translating..." : "Translate"}
+            otherClass='py-2.5'
             className="bg-blue-500 text-white px-4 py-2 rounded"
             disabled={loading}
           />
