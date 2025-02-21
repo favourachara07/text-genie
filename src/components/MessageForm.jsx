@@ -1,7 +1,7 @@
 import Button from "../components/Button";
 import { FaArrowUp } from "react-icons/fa";
 
-export default function MessageForm ({ inputValue, handleChange, handleKeyPress, handleSubmit }){
+export default function MessageForm ({ inputValue, handleChange, handleKeyPress, errorMessage,handleSubmit }){
   return (
     <form onSubmit={handleSubmit} className="flex flex-col justify-between mx-5">
       <div className="w-full mb-8  h-16 md:h-full rounded-[2rem] bg-[#4A4A4A] flex justify-between  hover:shadow-[0_0_10px_5px_rgba(64,255,170,0.1)] transition-all ease-in-out duration-300">
@@ -24,6 +24,11 @@ export default function MessageForm ({ inputValue, handleChange, handleKeyPress,
           </Button>
         </div>
       </div>
+      {errorMessage && (
+        <div className="text-red-500 text-sm mt-2">
+          {errorMessage}
+        </div>
+      )}
     </form>
   );
 };

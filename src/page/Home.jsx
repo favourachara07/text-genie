@@ -19,6 +19,7 @@ export default function Home() {
   } = useContext(TranslateContext);
   const [inputValue, setInputValue] = useState("");
   const [name, setName] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const functions = [
     { name: "Summarize", desc: "Not working at the moment", class:'text-red-500' },
@@ -32,10 +33,15 @@ export default function Home() {
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
+    setErrorMessage(""); // Clear error message when user starts typing
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (inputValue.trim() === "") {
+      setErrorMessage("Message cannot be empty.");
+      return;
+    }
     setMessages([...messages, inputValue]);
     setText(inputValue);
     setInputValue("");
@@ -103,6 +109,7 @@ export default function Home() {
         handleChange={handleChange}
         handleKeyPress={handleKeyPress}
         handleSubmit={handleSubmit}
+        errorMessage={errorMessage}
       />
     </div>
   );

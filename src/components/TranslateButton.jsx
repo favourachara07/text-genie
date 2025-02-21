@@ -51,7 +51,7 @@ const TranslateButton = ({ input }) => {
   }, [input, detector]);
 
   return (
-    <div className="flex flex-row md:flex-col w-fit justify-end items-end">
+    <div className="flex flex-col w-full md:w-auto justify-end items-end space-y-2">
       {checkingSupport ? (
         <div className="bg-gray-200 text-gray-700 p-2 rounded">
           Checking support...
@@ -64,10 +64,10 @@ const TranslateButton = ({ input }) => {
         <>
           <p className="mb-2 hidden md:block text-white">{detectedLanguage}</p>
 
-          <label className="block font-medium mb-[0.3rem] mr-2 md:mr-0">
+          <label className="block font-medium mb-2 text-white">
             Translate to:
             <select
-              className="ml-2 p-1 border rounded"
+              className="ml-2 p-1 border rounded bg-gray-700 text-white"
               value={selectedLanguage}
               onChange={(e) => setSelectedLanguage(e.target.value)}
             >
@@ -91,11 +91,34 @@ const TranslateButton = ({ input }) => {
               );
               setDisplayTranslate(false);
             }}
-            title={loading ? "Translating..." : "Translate"}
-            otherClass='py-2.5'
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+              otherClass="py-2.5 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
             disabled={loading}
-          />
+          >
+            {loading ? (
+              <svg
+                className="animate-spin h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+            ) : (
+              "Translate"
+            )}
+          </Button>
         </>
       )}
     </div>
